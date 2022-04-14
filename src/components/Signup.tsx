@@ -4,21 +4,25 @@ import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import { uiConfig } from '../firebase';
-
+import { useAuth, useAuthUpdate, useUserUpdate } from '../context/AuthContext';
+import { Link } from 'react-router-dom';
 function Signup() {
-  const [isSignedIn, setIsSignedIn] = useState(false); // Local signed-in state.
-
-  // Listen to the Firebase Auth state and set the local state.
+  const isAuthenticated = useAuth();
+  const setisAuthenticated = useAuthUpdate();
+  const setCurrentUser = useUserUpdate();
   useEffect(() => {
     const unregisterAuthObserver = firebase
       .auth()
       .onAuthStateChanged((user) => {
-        setIsSignedIn(!!user);
+        // @ts-ignore
+        setisAuthenticated(!!user);
+        // @ts-ignore
+        setCurrentUser(user);
       });
     return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
   }, []);
 
-  if (!isSignedIn) {
+  if (!isAuthenticated) {
     return (
       <div>
         <h1>My App</h1>
@@ -29,17 +33,14 @@ function Signup() {
         />
       </div>
     );
+  } else {
+    return (
+      <div>
+        <a onClick={() => firebase.auth().signOut()}>Sign-out</a>
+        <Link to="/">Chat</Link>
+      </div>
+    );
   }
-  return (
-    <div>
-      <h1>My App</h1>
-      <p>
-        Welcome {firebase.auth().currentUser!.displayName}! You are now
-        signed-in!
-      </p>
-      <a onClick={() => firebase.auth().signOut()}>Sign-out</a>
-    </div>
-  );
 }
 
 export default Signup;
