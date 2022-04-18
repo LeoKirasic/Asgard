@@ -36,7 +36,6 @@ function Signup() {
   } else {
     return (
       <div>
-        <a onClick={() => firebase.auth().signOut()}>Sign-out</a>
         <Link to="/">Chat</Link>
       </div>
     );
