@@ -1,11 +1,12 @@
-// @ts-nocheck
-/* eslint react/prop-types: 0 */
 import React, { ReactChild, useContext, useState } from 'react';
-
-const AuthContext = React.createContext();
+import firebase from 'firebase/compat/app';
+const AuthContext = React.createContext<boolean>(false);
+//@ts-ignore
 const AuthUpdateContext = React.createContext();
-const UserContext = React.createContext();
-const UserUpdateContext = React.createContext();
+
+const UserContext = React.createContext<firebase.User | object>({});
+
+const UserUpdateContext = React.createContext<firebase.User | object>({});
 
 export function useAuth() {
   return useContext(AuthContext);
@@ -21,14 +22,14 @@ export function useUser() {
 export function useUserUpdate() {
   return useContext(UserUpdateContext);
 }
-function AuthProvider({ children }) {
+function AuthProvider({ children }: any) {
   const [isAuthenticated, setisAuthenticated] = useState(false);
-  const [currentUser, setCurrentUser] = useState(false);
+  const [currentUser, setCurrentUser] = useState({});
 
-  function toggleIsAuthenticated(value) {
+  function toggleIsAuthenticated(value: boolean) {
     setisAuthenticated(value);
   }
-  function setUser(value) {
+  function setUser(value: object) {
     setCurrentUser(value);
   }
 
