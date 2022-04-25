@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useUser } from '../context/AuthContext';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import {
@@ -7,7 +7,8 @@ import {
   getFirestore,
   serverTimestamp,
 } from 'firebase/firestore';
-
+import getMessages from '../helpers/getMessages';
+import ChatMessage from './ChatMessage';
 type Inputs = {
   example: string;
   exampleRequired: string;
@@ -22,6 +23,8 @@ function Chat() {
   function getUserName() {
     return currentUser.displayName;
   }
+  const [messages, setMessages] = useState<any>([]);
+  const [currentMessage, setCurrentMessage] = useState<string>('');
 
   async function saveMessage(messageText: string) {
     try {
@@ -31,6 +34,7 @@ function Chat() {
         profilePicUrl: getProfilePicUrl(),
         timestamp: serverTimestamp(),
       });
+      setCurrentMessage(messageText);
     } catch (error) {
       console.error('Error writing new message to Firebase Database', error);
     }
@@ -44,14 +48,42 @@ function Chat() {
   const onSubmit: SubmitHandler<Inputs> = (data) =>
     saveMessage(data.exampleRequired);
 
+  useEffect(() => {
+    const renderMessages = async () => {
+      const data = await getMessages();
+      setMessages(data);
+    };
+    console.log('useEffect Ran');
+
+    renderMessages();
+  }, [currentMessage]);
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <input
-        className="rounded-md bg-purple-400"
-        {...register('exampleRequired', { required: true })}
-      />
-      <input className=" " type="submit" value="Send" />
-    </form>
+    <div>
+      <div>
+        {messages &&
+          messages.map((message: any) => {
+            return (
+              <ChatMessage
+                key={message.id}
+                id={message.id}
+                timestamp={message.timestamp}
+                name={message.name}
+                text={message.text}
+                profilePicUrl={message.profilePicUrl}
+              />
+            );
+          })}
+      </div>
+
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <input
+          className="rounded-md bg-purple-400"
+          {...register('exampleRequired', { required: true })}
+        />
+        <input className=" " type="submit" value="Send" />
+      </form>
+    </div>
   );
 }
 export default Chat;
