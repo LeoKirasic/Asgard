@@ -13,6 +13,7 @@ async function getMessages() {
     getDocs(messagesQuery).then((snapshot) => {
       snapshot.docs.forEach((doc) => {
         messages.push({ ...doc.data(), id: doc.id });
+        messages.sort((a, b) => (a as any).timestamp - (b as any).timestamp);
       });
       resolve(messages);
     });
