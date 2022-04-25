@@ -25,8 +25,6 @@ function Signup() {
   if (!isAuthenticated) {
     return (
       <div>
-        <h1>My App</h1>
-        <p>Please sign-in:</p>
         <StyledFirebaseAuth
           uiConfig={uiConfig}
           firebaseAuth={firebase.auth()}
