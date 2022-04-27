@@ -10,6 +10,7 @@ function Signup() {
   const isAuthenticated = useAuth();
   const setisAuthenticated = useAuthUpdate();
   const setCurrentUser = useUserUpdate();
+
   useEffect(() => {
     const unregisterAuthObserver = firebase
       .auth()
