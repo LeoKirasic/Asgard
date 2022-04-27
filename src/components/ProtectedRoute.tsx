@@ -2,7 +2,7 @@ import React from 'react';
 import { useAuth } from '../context/AuthContext';
 import Signup from './Signup';
 interface ProtectedRouteProps {
-  outlet: any;
+  outlet: React.ReactElement;
 }
 
 function ProtectedRoute({ outlet }: ProtectedRouteProps) {
