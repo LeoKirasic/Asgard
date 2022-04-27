@@ -7,7 +7,7 @@ import AuthProvider from './context/AuthContext';
 import Header from './components/Header';
 function App() {
   return (
-    <div className="flex flex-col items-center bg-background2 ml-6 mr-6 rounded-md">
+    <div className="flex flex-col items-center bg-background2 ml-12 mr-12 rounded-md">
       <AuthProvider>
         <Router>
           <Header></Header>
