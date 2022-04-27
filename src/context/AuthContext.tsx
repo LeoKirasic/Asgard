@@ -1,4 +1,4 @@
-import React, { ReactChild, useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import firebase from 'firebase/compat/app';
 const AuthContext = React.createContext<boolean>(false);
 //@ts-ignore
