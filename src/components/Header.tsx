@@ -13,7 +13,9 @@ function Header() {
 
   return (
     <div className="flex justify-center items-center">
-      <div className="text-purple-300 text-3xl flex-1 ml-36 ">Asgard</div>
+      <div className="text-purple-300 text-3xl flex-1 lg:text-4xl mb-1 2xl:text-5xl ">
+        Asgard
+      </div>
       <img
         onClick={() => logout()}
         className="absolute right-0 top-1 w-8  opacity-90 hover:opacity-100 hover:cursor-pointer lg:w-9 2xl:w-10"
