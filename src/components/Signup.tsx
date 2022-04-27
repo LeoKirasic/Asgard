@@ -34,7 +34,9 @@ function Signup() {
   } else {
     return (
       <div className="flex flex-col items-center">
+        <Link className="hover:text-purple-300" to="/">
           Click here to Chat!
+        </Link>
       </div>
     );
   }
