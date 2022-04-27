@@ -33,6 +33,7 @@ function Signup() {
     );
   } else {
     return (
+      <div className="flex flex-col items-center">
           Click here to Chat!
       </div>
     );
