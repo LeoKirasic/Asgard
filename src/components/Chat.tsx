@@ -9,10 +9,7 @@ import {
 } from 'firebase/firestore';
 import getMessages from '../helpers/getMessages';
 import ChatMessage from './ChatMessage';
-type Inputs = {
-  example: string;
-  exampleRequired: string;
-};
+import Inputs from '../ts/interfaces/Chat.interface';
 
 function Chat() {
   const currentUser: any = useUser();
