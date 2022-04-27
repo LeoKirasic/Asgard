@@ -11,7 +11,6 @@ function App() {
       <AuthProvider>
         <Router>
           <Header></Header>
-
           <Routes>
             <Route path="/signup" element={<Signup />}></Route>
             <Route path="/" element={<ProtectedRoute outlet={<Chat />} />} />
