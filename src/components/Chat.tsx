@@ -78,8 +78,9 @@ function Chat() {
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
-          className="rounded-md bg-purple-400"
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline bg-background2"
           {...register('exampleRequired', { required: true })}
+          placeholder="Message"
         />
         <input className=" " type="submit" value="Send" />
       </form>
