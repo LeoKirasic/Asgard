@@ -76,7 +76,7 @@ function Chat() {
           })}
       </div>
 
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className="flex">
         <input
           className="shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline bg-background2"
           {...register('exampleRequired', { required: true })}
