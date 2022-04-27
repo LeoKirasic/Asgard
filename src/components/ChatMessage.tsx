@@ -1,20 +1,8 @@
 import React from 'react';
 import convertUnixTime from '../helpers/convertUnixTime';
+import ChatMessageProps from '../ts/interfaces/ChatMessage.interface';
 
-interface DateProperties {
-  seconds: number;
-  nanoseconds: number;
-}
-
-interface ChatProps {
-  id: string;
-  timestamp: DateProperties;
-  name: string;
-  text: string;
-  profilePicUrl: string;
-}
-
-function ChatMessage(props: ChatProps) {
+function ChatMessage(props: ChatMessageProps) {
   const time = convertUnixTime(props.timestamp.seconds);
   return (
     <div className="flex flex-row items-start border-y border-stone-800 pt-2 pb-2 text-lg 2xl:text-2xl">
