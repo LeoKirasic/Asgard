@@ -16,7 +16,7 @@ function Header() {
       <div className="text-purple-300 text-3xl flex-1 ml-36 ">Asgard</div>
       <img
         onClick={() => logout()}
-        className=" w-1/12 h-1/12 max-w-full"
+        className="absolute right-0 top-1 w-8  opacity-90 hover:opacity-100 hover:cursor-pointer lg:w-9 2xl:w-10"
         src={logoutButton}
         alt="Logout Button"
       />
