@@ -33,8 +33,7 @@ function Signup() {
     );
   } else {
     return (
-      <div>
-        <Link to="/">Chat</Link>
+          Click here to Chat!
       </div>
     );
   }
