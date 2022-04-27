@@ -82,7 +82,11 @@ function Chat() {
           {...register('exampleRequired', { required: true })}
           placeholder="Message"
         />
-        <input className=" " type="submit" value="Send" />
+        <input
+          className="hover:text-purple-300 hover:cursor-pointer"
+          type="submit"
+          value="Send"
+        />
       </form>
     </div>
   );
