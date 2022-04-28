@@ -50,8 +50,6 @@ function Chat() {
       const data = await getMessages();
       setMessages(data);
     };
-    console.log('useEffect Ran');
-
     renderMessages();
   }, [currentMessage]);
 
