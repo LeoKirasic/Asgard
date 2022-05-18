@@ -2,7 +2,7 @@
         
    # Asgard
         
-   Photo Tagging Application inspired by Where's Wally.
+   Instant Messaging Application
         
    [Live Demo](https://asgard-2f1b5.web.app/) •
    [Installation](#installation) •
