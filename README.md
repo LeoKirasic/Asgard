@@ -1,6 +1,6 @@
 <div align="center">
         
-   # Where's Waldo
+   # Asgard
         
    Photo Tagging Application inspired by Where's Wally.
         
